@@ -84,3 +84,5 @@ class Whatsapp {
         })
     }
 }
+
+module.exports = new Whatsapp
