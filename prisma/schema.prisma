@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//generate prima model to save user data
+model User {
+  id          Int @id @default(autoincrement())
+  name        String
+  email       String
+  password    String
+  createdAt   DateTime
+  updatedAt   DateTime
+  staff       Int
+}
+
+model WhatsappBL {
+  id            Int @id @default(autoincrement())
+  userId        Int
+  whatsappId    String
+  messageType   String
+  messageId     String
+  messageText   String
+  messageObject String
+  messageMidia  String
+  onGroup       Boolean
+  groupId       String
+  pushNames     String
+  createdAt     DateTime
+  updatedAt     DateTime
+  description   String
+}
+
+model TelegramBL {
+  id            Int @id @default(autoincrement())
+  userId        Int
+  telegramId    String
+  messageType   String
+  messageId     String
+  messageText   String
+  messageObject String
+  messageMidia  String
+  onGroup       Boolean
+  groupId       String
+  pushNames     String
+  createdAt     DateTime
+  updatedAt     DateTime
+  description   String
+}
+
+model DiscordBL {
+  id            Int @id @default(autoincrement())
+  userId        Int
+  discordId     String
+  messageType   String
+  messageId     String
+  messageText   String
+  messageObject String
+  messageMidia  String
+  onGroup       Boolean
+  groupId       String
+  pushNames     String
+  createdAt     DateTime
+  updatedAt     DateTime
+  description   String
+}
+
+
+
