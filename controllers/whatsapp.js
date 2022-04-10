@@ -25,8 +25,8 @@ module.exports = app => {
                 )
         })
         app.get('/whatsapp', (req, res) => {
-                let userId = req.body.userId
-                Whatsapp.get(userId)
+                let whatsappId = req.query.whatsappId
+                Whatsapp.get(whatsappId)
                 .then(whatsapp => {
                         res.json(whatsapp)
                 })

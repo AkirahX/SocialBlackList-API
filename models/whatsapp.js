@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 
 class Whatsapp {
     //create a post function to save whatsapp message
-    static post(userId, 
+    post(userId, 
         whatsappId, 
         messageType, 
         messageText, 
@@ -17,7 +17,7 @@ class Whatsapp {
         description ) {
         return new Promise((resolve, reject) => {
             const prisma = new PrismaClient()
-            prisma.whatsapp.create({
+            prisma.WhatsappBL.create({
                 data: {
                     userId: userId,
                     whatsappId: whatsappId,
@@ -28,9 +28,9 @@ class Whatsapp {
                     messageMidia: messageMidia,
                     onGroup: onGroup,
                     groupId: groupId,
-                    pushName: pushName,
-                    createdAt: createdAt,
-                    updatedAt: updatedAt,
+                    pushNames: pushName,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
                     description: description
                 }
             })
@@ -45,12 +45,12 @@ class Whatsapp {
         })
     }
     //create a get function to get whatsapp message
-    static get(userId) {
+    get(whatsappId) {
         return new Promise((resolve, reject) => {
             const prisma = new PrismaClient()
-            prisma.whatsapp.findMany({
+            prisma.WhatsappBL.findMany({
                 where: {
-                    userId: userId
+                    whatsappId: whatsappId
                 }
             })
             .then(whatsapp => {
@@ -64,7 +64,7 @@ class Whatsapp {
         })
     }
     //create a delete function to delete whatsapp message
-    static delete(userId, whatsappId) {
+    delete(userId, whatsappId) {
         return new Promise((resolve, reject) => {
             const prisma = new PrismaClient()
             prisma.whatsapp.delete({
